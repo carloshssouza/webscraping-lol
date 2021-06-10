@@ -30,6 +30,18 @@ const convertLetter = (data) => {
   }
 };
 
+const getPassive = () => {
+  const icon = await page.evaluate(() => {
+    const data = document.querySelector("style__OptionIcon-sc-18a4qs7-5 img");
+    return data.src;
+  });
+
+  const title = await page.evaluate(() => {
+    const data = document.querySelector("style__AbilityInfo-ulelzu-6 h5");
+    return data.textContent;
+  });
+};
+
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
